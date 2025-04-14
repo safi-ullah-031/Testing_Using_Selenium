@@ -4,7 +4,7 @@ import time
 
 # Start the browser
 driver = webdriver.Chrome()
-driver.get("https://your-live-form-url.com")
+driver.get("http://sqap-demo.com.pafiastcommunity.com/")
 
 # Fill the form with invalid email
 driver.find_element(By.ID, "name").send_keys("Safi Khan")

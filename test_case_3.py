@@ -4,7 +4,7 @@ import time
 
 # Start the browser
 driver = webdriver.Chrome()
-driver.get("https://your-live-form-url.com")
+driver.get("http://sqap-demo.com.pafiastcommunity.com/")
 
 # Do not enter anything - just submit
 driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
