@@ -1,22 +1,48 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
-# Start Chrome browser
-driver = webdriver.Chrome()  # or provide path: webdriver.Chrome(executable_path="path_to_chromedriver")
+# Start the Chrome WebDriver
+driver = webdriver.Chrome()
 
-# Open your form page
-driver.get("http://sqap-demo.com.pafiastcommunity.com/")  # Replace with your form URL
+# Open a sample form (you can replace this with your own)
+driver.get("http://sqap-demo.com.pafiastcommunity.com/")
 
-# Fill out the form fields
-driver.find_element(By.NAME, "username").send_keys("test_user")
-driver.find_element(By.NAME, "email").send_keys("test@example.com")
-driver.find_element(By.NAME, "password").send_keys("securepassword123")
+# Optional: Maximize window
+driver.maximize_window()
 
-# Submit the form
-driver.find_element(By.ID, "submit-btn").click()  # Use the correct selector for your button
+# Wait until the input fields are present
+try:
+    # Wait for the first input (First name)
+    first_name_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//input[@id="name"]'))
+    )
+    first_name_input.clear()
+    first_name_input.send_keys("John")
 
-# Wait and close
-time.sleep(3)
+    # Wait for the second input (Last name)
+    last_name_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//input[@id="email"]'))
+    )
+    last_name_input.clear()
+    last_name_input.send_keys("Doe@gmail.com")
+
+    subject_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located(By.XPATH, '//input[@id="subject"]')
+    )
+    
+
+    # Find and click the submit button (here it's a regular button)
+    submit_btn = driver.find_element(By.XPATH, '//button[text()="Send Message"]')
+    submit_btn.click()
+
+    # Wait and view the result (if any)
+    time.sleep(3)
+
+except Exception as e:
+    print("Error:", e)
+
+# Close the browser
 driver.quit()
