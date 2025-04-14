@@ -36,7 +36,7 @@ try:
     subject_input.send_keys("This is a test")
 
     Message_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//input[@id="message"]'))
+        EC.presence_of_element_located((By.XPATH, '//textarea[@id="message"]'))
     )
     Message_input.clear()
     Message_input.send_keys("This is a test message send by the selenium to test the webdriver and selenium installation")
