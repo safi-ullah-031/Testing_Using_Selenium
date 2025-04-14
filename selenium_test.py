@@ -30,10 +30,16 @@ try:
     last_name_input.send_keys("Doe@gmail.com")
 
     subject_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located(By.XPATH, '//input[@id="subject"]')
+        EC.presence_of_element_located((By.XPATH, '//input[@id="subject"]'))
     )
     subject_input.clear()
     subject_input.send_keys("This is a test")
+
+    Message_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//input[@id="message"]'))
+    )
+    Message_input.send_keys("This is a test message send by the selenium to test the webdriver and selenium installation")
+
 
     # Find and click the submit button (here it's a regular button)
     submit_btn = driver.find_element(By.XPATH, '//button[text()="Send Message"]')
