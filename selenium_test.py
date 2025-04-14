@@ -22,7 +22,7 @@ try:
     first_name_input.clear()
     first_name_input.send_keys("John")
 
-    # Wait for the second input (Last name)
+    # Wait for the second input (email)
     last_name_input = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, '//input[@id="email"]'))
     )
@@ -32,7 +32,8 @@ try:
     subject_input = WebDriverWait(driver, 10).until(
         EC.presence_of_all_elements_located(By.XPATH, '//input[@id="subject"]')
     )
-    
+    subject_input.clear()
+    subject_input.send_keys("This is a test")
 
     # Find and click the submit button (here it's a regular button)
     submit_btn = driver.find_element(By.XPATH, '//button[text()="Send Message"]')
