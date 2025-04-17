@@ -18,6 +18,7 @@ driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
 
 
 time.sleep(3)
-
+driver.save_screenshot("form_submission_screenshot.png")
+print("Screenshot saved as form_submission_screenshot.png")
 
 driver.quit()
