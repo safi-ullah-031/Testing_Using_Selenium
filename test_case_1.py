@@ -9,10 +9,13 @@ driver.get("http://sqap-demo.com.pafiastcommunity.com/")
 
 
 driver.find_element(By.ID, "name").send_keys("Safi Ullah")
+time.sleep(1)
 driver.find_element(By.ID, "email").send_keys("safi@example.com")
+time.sleep(1)
 driver.find_element(By.ID, "subject").send_keys("Automation Testing")
+time.sleep(1)
 driver.find_element(By.ID, "message").send_keys("This is a test message. Sent using the Selenium WebDriver.")
-
+time.sleep(1)
 
 driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
 
